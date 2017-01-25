@@ -1,0 +1,24 @@
+{
+    "name": "antoinelemaire/aircall-php",
+    "description": "Aircall API client built on top of Guzzle 6",
+    "keywords": ["aircall", "aircall.io", "api", "guzzle"],
+    "license": "Apache Version 2",
+    "authors": [
+        {
+            "name": "AntoineLemaire",
+            "homepage": "https://github.com/AntoineLemaire"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Aircall\\": ["src"]
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "~6.0",
+        "php": ">= 5.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.0.*"
+    }
+}
