@@ -1,6 +1,11 @@
 Changes
 =========
 
+1.0.0
+
+ - Complete documentation in README
+ - Remove unused functions parameters
+
 1.0.0-b1
 
  - initial beta release

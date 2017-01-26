@@ -25,14 +25,12 @@ class AircallCompany
     /**
      * Gets generic data about the account.
      *
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function getCompany($options = [])
+    public function getCompany()
     {
-        return $this->client->get(self::BASE_ENDPOINT, $options);
+        return $this->client->get(self::BASE_ENDPOINT);
     }
 }

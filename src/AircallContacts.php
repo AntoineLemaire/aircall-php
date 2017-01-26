@@ -27,32 +27,29 @@ class AircallContacts
     /**
      * Lists Contacts.
      *
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function getContacts($options = [])
+    public function getContacts()
     {
-        return $this->client->get(self::BASE_ENDPOINT, $options);
+        return $this->client->get(self::BASE_ENDPOINT);
     }
 
     /**
      * Gets a single Contact with their ID.
      *
-     * @param int   $id
-     * @param array $options
+     * @param int $id
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function getContact($id, $options = [])
+    public function getContact($id)
     {
         $path = $this->contactPath($id);
 
-        return $this->client->get($path, $options);
+        return $this->client->get($path);
     }
 
     /**
@@ -90,17 +87,16 @@ class AircallContacts
      * Delete a specific Contact.
      *
      * @param int|string $id
-     * @param array      $options
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function delete($id, $options = [])
+    public function delete($id)
     {
         $path = $this->contactPath($id);
 
-        return $this->client->delete($path, $options);
+        return $this->client->delete($path);
     }
 
     /**

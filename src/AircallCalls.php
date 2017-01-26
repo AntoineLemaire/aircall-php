@@ -27,32 +27,29 @@ class AircallCalls
     /**
      * Lists Calls.
      *
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function getCalls($options = [])
+    public function getCalls()
     {
-        return $this->client->get(self::BASE_ENDPOINT, $options);
+        return $this->client->get(self::BASE_ENDPOINT);
     }
 
     /**
      * Gets a single Call with their ID.
      *
-     * @param int   $id
-     * @param array $options
+     * @param int $id
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function getCall($id, $options = [])
+    public function getCall($id)
     {
         $path = $this->callPath($id);
 
-        return $this->client->get($path, $options);
+        return $this->client->get($path);
     }
 
     /**
@@ -113,11 +110,11 @@ class AircallCalls
      *
      * @return mixed
      */
-    public function deleteRecordingCall($id, $options = [])
+    public function deleteRecordingCall($id)
     {
         $path = $this->callPath($id);
 
-        return $this->client->delete($path.'/recording', $options);
+        return $this->client->delete($path.'/recording');
     }
 
     /**

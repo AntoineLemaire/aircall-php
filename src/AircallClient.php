@@ -72,17 +72,16 @@ class AircallClient
      * Sends POST request to Aircall API.
      *
      * @param string $endpoint
-     * @param string $json
+     * @param array  $datas
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function post($endpoint, $json)
+    public function post($endpoint, $datas = [])
     {
         $response = $this->http_client->request('POST', $this->getUri().$endpoint, [
-            'json' => $json,
-            'auth' => $this->getAuth(),
+            'json' => $datas,
             'headers' => [
                 'Accept' => 'application/json',
             ],
@@ -95,16 +94,16 @@ class AircallClient
      * Sends PUT request to Aircall API.
      *
      * @param string $endpoint
-     * @param string $json
+     * @param array  $datas
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function put($endpoint, $json)
+    public function put($endpoint, $datas = [])
     {
         $response = $this->http_client->request('PUT', $this->getUri().$endpoint, [
-            'json' => $json,
+            'json' => $datas,
             'headers' => [
                 'Accept' => 'application/json',
             ],
@@ -117,16 +116,16 @@ class AircallClient
      * Sends DELETE request to Aircall API.
      *
      * @param string $endpoint
-     * @param string $json
+     * @param array  $datas
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function delete($endpoint, $json)
+    public function delete($endpoint, $datas = [])
     {
         $response = $this->http_client->request('DELETE', $this->getUri().$endpoint, [
-            'json' => $json,
+            'json' => $datas,
             'headers' => [
                 'Accept' => 'application/json',
             ],
@@ -137,16 +136,16 @@ class AircallClient
 
     /**
      * @param string $endpoint
-     * @param string $query
+     * @param array  $$datas
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function get($endpoint, $query)
+    public function get($endpoint, $datas = [])
     {
         $response = $this->http_client->request('GET', $this->getUri().$endpoint, [
-            'query' => $query,
+            'query' => $datas,
             'headers' => [
                 'Accept' => 'application/json',
             ],

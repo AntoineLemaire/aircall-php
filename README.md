@@ -46,10 +46,10 @@ $client->company->getCompany();
 
 ```php
 // Get a user by ID
-$client->users->getUser("155468");
+$client->users->getUser('155468');
 
 // List all users
-$client->users->getUsers([]);
+$client->users->getUsers();
 ```
 
 ## Calls
@@ -59,41 +59,82 @@ $client->users->getUsers([]);
 $client->calls->getCall('155468');
 
 // List all calls
-$client->calls->getCalls([]);
+$client->calls->getCalls();
 
 // Search calls
-$client->calls->searchCalls([]);
+$client->calls->searchCalls([
+  'tags' => 'myTag',
+]);
 
 // Display a link in-app to the User who answered a specific Call.
-$client->calls->linkCall([]);
+$client->calls->linkCall('155468', [
+    'link' => 'http://something.io/mypage'
+]);
 
 // Transfer the Call to another user.
-$client->calls->callPath([]);
+$client->calls->transfertCall('1644658', [
+    'user_id' => '8945487'
+]);
 
 // Delete the recording of a specific Call.
-$client->calls->deleteRecordingCall([]);
+$client->calls->deleteRecordingCall('795312');
 
 // Delete the voicemail of a specific Call.
-$client->calls->deleteVoicemailCall([]);
+$client->calls->deleteVoicemailCall('13877988');
 ```
 
 ## Contacts
 
 ```php
+// List all contacts
+$client->contacts->getContacts();
+
 // Get a contact by ID
 $client->contacts->getContact('699421');
 
-// List all contacts
-$client->contacts->getContacts([]);
-
 // Create a contact
-$client->contacts->create([]);
+$client->contacts->create([
+    'first_name'    => 'John',
+    'last_name'     => 'Doe',
+    'information'   => 'TEST',
+    'phone_numbers' => [
+        [
+            'label' => 'Work',
+            'value' => '+33631000000',
+        ],
+    ],
+    'emails' => [
+        [
+            'label' => 'Work',
+            'value' => 'john.doe@something.io',
+        ],
+    ],
+]);
 
 // Search contacts
-$client->contacts->searchContacts([]);
+$client->contacts->searchContacts([
+    'phone_number' => '+33631000000',
+    'email' => 'john.doe@something.io'
+]);
 
 // Update data for a specific Contact
-$client->contacts->update('165451', []);
+$client->contacts->update('165451', [
+  'first_name'    => 'John',
+  'last_name'     => 'Doe',
+  'information'   => 'TEST',
+  'phone_numbers' => [
+      [
+          'label' => 'Work',
+          'value' => '+33631000000',
+      ],
+  ],
+  'emails' => [
+      [
+          'label' => 'Work',
+          'value' => 'john.doe@something.io',
+      ],
+  ],
+]);
 
 // Delete a specific Contact
 $client->contacts->delete('325459');

@@ -27,32 +27,29 @@ class AircallUsers
     /**
      * Lists Users.
      *
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function getUsers($options = [])
+    public function getUsers()
     {
-        return $this->client->get(self::BASE_ENDPOINT, $options);
+        return $this->client->get(self::BASE_ENDPOINT);
     }
 
     /**
      * Gets a single User with their ID.
      *
-     * @param int   $id
-     * @param array $options
+     * @param int $id
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function getUser($id, $options = [])
+    public function getUser($id)
     {
         $path = $this->userPath($id);
 
-        return $this->client->get($path, $options);
+        return $this->client->get($path);
     }
 
     /**

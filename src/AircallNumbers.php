@@ -27,32 +27,29 @@ class AircallNumbers
     /**
      * Lists Numbers.
      *
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function getNumbers($options = [])
+    public function getNumbers()
     {
-        return $this->client->get(self::BASE_ENDPOINT, $options);
+        return $this->client->get(self::BASE_ENDPOINT);
     }
 
     /**
      * Gets a single Number with their ID.
      *
-     * @param int   $id
-     * @param array $options
+     * @param int $id
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function getNumber($id, $options = [])
+    public function getNumber($id)
     {
         $path = $this->numberPath($id);
 
-        return $this->client->get($path, $options);
+        return $this->client->get($path);
     }
 
     /**
