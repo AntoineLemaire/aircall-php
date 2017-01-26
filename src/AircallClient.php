@@ -3,8 +3,8 @@
 namespace Aircall;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Response;
 use function GuzzleHttp\Psr7\stream_for;
+use Psr\Http\Message\ResponseInterface;
 
 class AircallClient
 {
@@ -235,11 +235,11 @@ class AircallClient
     }
 
     /**
-     * @param Response $response
+     * @param ResponseInterface $response
      *
      * @return mixed
      */
-    private function handleResponse(Response $response)
+    private function handleResponse(ResponseInterface $response)
     {
         $stream = stream_for($response->getBody());
         $data = json_decode($stream);

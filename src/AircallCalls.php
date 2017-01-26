@@ -104,7 +104,6 @@ class AircallCalls
      * Delete the recording of a specific Call.
      *
      * @param int   $id
-     * @param array $options
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
