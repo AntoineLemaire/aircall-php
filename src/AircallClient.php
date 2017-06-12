@@ -235,6 +235,7 @@ class AircallClient
     public function addAuthToUri($uri)
     {
         if (false !== $pos = strpos($uri, self::BASE_URI)) {
+
             return substr_replace($uri, $this->getAuth().'@', $pos, 0);
         }
         throw new \InvalidArgumentException('uri is not an Aircall API Uri');
@@ -257,6 +258,14 @@ class AircallClient
             throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $per_page));
         }
         $this->addOption('per_page', $per_page);
+        return $this;
+    }
+
+    public function setPage($page = 1){
+        if (!is_int($page)) {
+            throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $page));
+        }
+        $this->addOption('page', $page);
         return $this;
     }
 

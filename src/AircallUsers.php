@@ -33,7 +33,7 @@ class AircallUsers
      */
     public function getUsers()
     {
-        return $this->client->get(self::BASE_ENDPOINT);
+        return $this->client->get(self::BASE_ENDPOINT, $this->client->options);
     }
 
     /**
