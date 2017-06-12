@@ -2,14 +2,8 @@
 
 namespace Aircall;
 
-/**
- * Class AircallCalls.
- *
- * @see http://developer.aircall.io/#call
- */
-class AircallCalls
+class AircallOptions
 {
-    const BASE_ENDPOINT = 'calls';
 
     /** @var AircallClient */
     private $client;
@@ -33,7 +27,7 @@ class AircallCalls
      */
     public function getCalls()
     {
-        return $this->client->get(self::BASE_ENDPOINT, $this->client->options);
+        return $this->client->get(self::BASE_ENDPOINT);
     }
 
     /**
