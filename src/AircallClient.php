@@ -3,8 +3,8 @@
 namespace Aircall;
 
 use GuzzleHttp\Client;
-use function GuzzleHttp\Psr7\stream_for;
 use Psr\Http\Message\ResponseInterface;
+use function GuzzleHttp\Psr7\stream_for;
 
 class AircallClient
 {
@@ -34,6 +34,11 @@ class AircallClient
     /** @var AircallContacts $contacts */
     public $contacts;
 
+    public $options;
+
+    const ORDER_ASC = 'asc';
+    const ORDER_DESC = 'desc';
+
     /**
      * AircallClient constructor.
      *
@@ -51,6 +56,7 @@ class AircallClient
 
         $this->apiID = $apiID;
         $this->apiToken = $apiToken;
+        $this->options=[];
     }
 
     private function setDefaultClient()
@@ -229,10 +235,40 @@ class AircallClient
     public function addAuthToUri($uri)
     {
         if (false !== $pos = strpos($uri, self::BASE_URI)) {
+
             return substr_replace($uri, $this->getAuth().'@', $pos, 0);
         }
         throw new \InvalidArgumentException('uri is not an Aircall API Uri');
     }
+
+    public function setOrder($order = 'asc'){
+        if (!in_array($order, [
+            self::ORDER_ASC,
+            self::ORDER_DESC,
+        ], true)) {
+            throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $order));
+        }
+
+        $this->addOption('order', $order);
+        return $this;
+    }
+
+    public function setLimit($per_page = 50){
+        if (!is_int($per_page)) {
+            throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $per_page));
+        }
+        $this->addOption('per_page', $per_page);
+        return $this;
+    }
+
+    public function setPage($page = 1){
+        if (!is_int($page)) {
+            throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $page));
+        }
+        $this->addOption('page', $page);
+        return $this;
+    }
+
 
     /**
      * @param ResponseInterface $response
@@ -242,8 +278,16 @@ class AircallClient
     private function handleResponse(ResponseInterface $response)
     {
         $stream = stream_for($response->getBody());
-        $data = json_decode($stream);
 
-        return $data;
+        return json_decode($stream);
+    }
+
+
+    public function addOption($name, $default = null){
+        if (array_key_exists($name, $this->options)) {
+            throw new \InvalidArgumentException(sprintf('The option \'%s\' already exists.', $name));
+        }
+        $this->options[$name] = $default;
+        return $this;
     }
 }
