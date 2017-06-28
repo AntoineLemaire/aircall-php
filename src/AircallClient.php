@@ -302,7 +302,7 @@ class AircallClient
     }
 
     public function setPage($page = 1){
-        if (!($page)) {
+        if (!is_int($page)) {
             throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $page));
         }
         $this->addOption('page', $page);
