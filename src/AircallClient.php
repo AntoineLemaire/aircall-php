@@ -261,6 +261,46 @@ class AircallClient
         return $this;
     }
 
+    public function setFrom($unixTimestamp){
+        if (!is_int($unixTimestamp)) {
+            throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $unixTimestamp));
+        }
+        $this->addOption('from', $unixTimestamp);
+        return $this;
+    }
+
+    public function setTo($unixTimestamp){
+        if (!is_int($unixTimestamp)) {
+            throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $unixTimestamp));
+        }
+        $this->addOption('to', $unixTimestamp);
+        return $this;
+    }
+
+    public function setPhoneNumber($phone_number = 1){
+        if (!is_int($phone_number)) {
+            throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $phone_number));
+        }
+        $this->addOption('phone_number', $phone_number);
+        return $this;
+    }
+
+    public function setEmail($email = 1){
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $email));
+        }
+        $this->addOption('email', $email);
+        return $this;
+    }
+
+    public function setLink($url){
+        if (!filter_var($url, FILTER_VALIDATE_URL)) {
+            throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $url));
+        }
+        $this->addOption('url', $url);
+        return $this;
+    }
+
     public function setPage($page = 1){
         if (!is_int($page)) {
             throw new \InvalidArgumentException(sprintf('The option \'%s\' is not valid.', $page));
