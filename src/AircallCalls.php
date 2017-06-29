@@ -33,7 +33,7 @@ class AircallCalls
      */
     public function getCalls()
     {
-        return $this->client->get(self::BASE_ENDPOINT);
+        return $this->client->get(self::BASE_ENDPOINT, $this->client->options);
     }
 
     /**
