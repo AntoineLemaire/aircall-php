@@ -36,6 +36,8 @@ class AircallClient
 
     public $options;
 
+    public $headers;
+
     const ORDER_ASC = 'asc';
     const ORDER_DESC = 'desc';
 
@@ -309,6 +311,30 @@ class AircallClient
         return $this;
     }
 
+    public function getHeader(){
+        return $this->headers;
+    }
+
+    public function getHeaderApiCallsLimit(){
+        if ($this->headers && array_key_exists('X-AircallApi-Remaining', $this->headers) && array_key_exists('0', $this->headers['X-AircallApi-Remaining'])){
+            return $this->headers['X-AircallApi-Remaining'][0];
+        }
+        return false;
+    }
+
+    public function getHeaderApiCallsRemaining(){
+        if ($this->headers && array_key_exists('X-AircallApi-Remaining', $this->headers) && array_key_exists('0', $this->headers['X-AircallApi-Remaining'])){
+            return $this->headers['X-AircallApi-Remaining'][0];
+        }
+        return false;
+    }
+
+    public function getHeaderApiCounterResset(){
+        if ($this->headers && array_key_exists('X-AircallApi-Reset', $this->headers) && array_key_exists('0', $this->headers['X-AircallApi-Reset'])){
+            return $this->headers['X-AircallApi-Reset'][0];
+        }
+        return false;
+    }
 
     /**
      * @param ResponseInterface $response
@@ -317,6 +343,7 @@ class AircallClient
      */
     private function handleResponse(ResponseInterface $response)
     {
+        $this->headers = $response->getHeaders();
         $stream = stream_for($response->getBody());
 
         return json_decode($stream);
