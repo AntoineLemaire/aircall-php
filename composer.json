@@ -2,7 +2,7 @@
     "name": "antoinelemaire/aircall-php",
     "description": "Aircall API client built on top of Guzzle 6",
     "keywords": ["aircall", "aircall.io", "api", "guzzle"],
-    "license": "Apache Version 2",
+    "license": "Apache-2.0",
     "authors": [
         {
             "name": "AntoineLemaire",
