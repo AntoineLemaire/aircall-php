@@ -27,13 +27,15 @@ class AircallCalls
     /**
      * Lists Calls.
      *
+     * @param array $options
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function getCalls()
+    public function getCalls($options)
     {
-        return $this->client->get(self::BASE_ENDPOINT);
+        return $this->client->get(self::BASE_ENDPOINT, $options);
     }
 
     /**
@@ -103,7 +105,7 @@ class AircallCalls
     /**
      * Delete the recording of a specific Call.
      *
-     * @param int   $id
+     * @param int $id
      *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *

@@ -1,6 +1,10 @@
 Changes
 =========
 
+1.0.1
+
+ - Add options to allow extra parameters for filters (https://developer.aircall.io/api-references/#extra-parameters)
+
 1.0.0
 
  - Complete documentation in README

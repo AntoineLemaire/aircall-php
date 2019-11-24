@@ -27,13 +27,15 @@ class AircallUsers
     /**
      * Lists Users.
      *
+     * @param array $options
+     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function getUsers()
+    public function getUsers($options = [])
     {
-        return $this->client->get(self::BASE_ENDPOINT);
+        return $this->client->get(self::BASE_ENDPOINT, $options);
     }
 
     /**
