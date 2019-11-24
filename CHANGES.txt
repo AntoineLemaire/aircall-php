@@ -1,6 +1,10 @@
 Changes
 =========
 
+1.0.2
+
+  - Add missing endpoints
+
 1.0.1
 
  - Add options to allow extra parameters for filters (https://developer.aircall.io/api-references/#extra-parameters)

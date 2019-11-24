@@ -55,6 +55,38 @@ class AircallUsers
     }
 
     /**
+     * Start an outbound call for a specific User.
+     *
+     * @param int $id
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function calls($id, $options = [])
+    {
+        $path = $this->userPath($id);
+
+        return $this->client->post($path.'/calls', $options);
+    }
+
+    /**
+     * Dial a phone number in an agent's phone.
+     *
+     * @param int $id
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function dial($id, $options = [])
+    {
+        $path = $this->userPath($id);
+
+        return $this->client->post($path.'/dial', $options);
+    }
+
+    /**
      * @param $id
      *
      * @return string

@@ -103,6 +103,91 @@ class AircallCalls
     }
 
     /**
+     * Comment the Call.
+     *
+     * @param int   $id
+     * @param array $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function comment($id, $options = [])
+    {
+        $path = $this->callPath($id);
+
+        return $this->client->post($path.'/metadata', $options);
+    }
+
+    /**
+     * Pause recording on a live Call.
+     *
+     * @param int   $id
+     * @param array $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function pauseRecording($id, $options = [])
+    {
+        $path = $this->callPath($id);
+
+        return $this->client->post($path.'/pause_recording', $options);
+    }
+
+    /**
+     * Resume recording on a live Call.
+     *
+     * @param int   $id
+     * @param array $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function resumeRecording($id, $options = [])
+    {
+        $path = $this->callPath($id);
+
+        return $this->client->post($path.'/resume_recording', $options);
+    }
+
+    /**
+     * Display custom informations during a Call in the Phone app.
+     *
+     * @param int   $id
+     * @param array $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function getMetadata($id, $options = [])
+    {
+        $path = $this->callPath($id);
+
+        return $this->client->post($path.'/metadata', $options);
+    }
+
+    /**
+     * Set the Tags for a specific Call.
+     *
+     * @param int   $id
+     * @param array $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function setTags($id, $options = [])
+    {
+        $path = $this->callPath($id);
+
+        return $this->client->post($path.'/tags', $options);
+    }
+
+    /**
      * Delete the recording of a specific Call.
      *
      * @param int $id
