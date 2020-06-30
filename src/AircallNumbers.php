@@ -55,6 +55,23 @@ class AircallNumbers
     }
 
     /**
+     * Update a single Number with their ID.
+     *
+     * @param int   $id
+     * @param array $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function updateNumber($id, $options = [])
+    {
+        $path = $this->numberPath($id);
+
+        return $this->client->put($path, $options);
+    }
+
+    /**
      * @param $id
      *
      * @return string
