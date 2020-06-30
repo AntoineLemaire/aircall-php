@@ -38,7 +38,7 @@ $client->company->get();
 
 ```php
 // Get a user by ID
-$client->users->get('155468');
+$client->users->get(155468);
 
 // List all users
 $client->users->list();
@@ -48,7 +48,7 @@ $client->users->list();
 
 ```php
 // Get a call by ID
-$client->calls->get('155468');
+$client->calls->get(155468);
 
 // List all calls
 $client->calls->list();
@@ -59,20 +59,20 @@ $client->calls->search([
 ]);
 
 // Display a link in-app to the User who answered a specific Call.
-$client->calls->link('155468', [
+$client->calls->link(155468, [
     'link' => 'http://something.io/mypage'
 ]);
 
 // Transfer the Call to another user.
-$client->calls->transfert('1644658', [
-    'user_id' => '8945487'
+$client->calls->transfert(1644658, [
+    'user_id' => 8945487
 ]);
 
 // Delete the recording of a specific Call.
-$client->calls->deleteRecording('795312');
+$client->calls->deleteRecording(795312);
 
 // Delete the voicemail of a specific Call.
-$client->calls->deleteVoicemail('13877988');
+$client->calls->deleteVoicemail(13877988);
 ```
 
 ### Contacts
@@ -82,7 +82,7 @@ $client->calls->deleteVoicemail('13877988');
 $client->contacts->list();
 
 // Get a contact by ID
-$client->contacts->get('699421');
+$client->contacts->get(699421);
 
 // Create a contact
 $client->contacts->create([
@@ -110,7 +110,7 @@ $client->contacts->search([
 ]);
 
 // Update data for a specific Contact
-$client->contacts->update('165451', [
+$client->contacts->update(165451, [
   'first_name'    => 'John',
   'last_name'     => 'Doe',
   'information'   => 'TEST',
@@ -129,9 +129,11 @@ $client->contacts->update('165451', [
 ]);
 
 // Delete a specific Contact
-$client->contacts->delete('325459');
+$client->contacts->delete(325459);
 ```
 ### Tags
 TODO
 ### Webhooks
+TODO
+### Teams
 TODO
