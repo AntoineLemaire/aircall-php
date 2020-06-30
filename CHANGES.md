@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.1.0 (2020-06-30)
+
+* Fix AircallCalls::comment
+* Add /calls/:id/insight_cards
+* Add all Tag endpoints
+* Add all Webhook endpoints
 ## 1.0.2 (2019-11-24)
 
  * Add missing endpoints:
