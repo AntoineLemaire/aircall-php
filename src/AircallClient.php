@@ -34,6 +34,9 @@ class AircallClient
     /** @var AircallContacts $contacts */
     public $contacts;
 
+    /** @var AircallTags $contacts */
+    public $tags;
+
     /**
      * AircallClient constructor.
      *
@@ -48,6 +51,7 @@ class AircallClient
         $this->numbers = new AircallNumbers($this);
         $this->calls = new AircallCalls($this);
         $this->contacts = new AircallContacts($this);
+        $this->tags = new AircallTags($this);
 
         $this->apiID = $apiID;
         $this->apiToken = $apiToken;
