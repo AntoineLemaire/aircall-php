@@ -33,13 +33,13 @@ class AircallNumbers
      *
      * @return mixed
      */
-    public function getNumbers($options = [])
+    public function list($options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
 
     /**
-     * Gets a single Number with their ID.
+     * Retrieve a Number.
      *
      * @param int $id
      *
@@ -47,7 +47,7 @@ class AircallNumbers
      *
      * @return mixed
      */
-    public function getNumber($id)
+    public function get($id)
     {
         $path = $this->numberPath($id);
 
@@ -55,7 +55,7 @@ class AircallNumbers
     }
 
     /**
-     * Update a single Number with their ID.
+     * Update a single Number.
      *
      * @param int   $id
      * @param array $options
@@ -64,7 +64,7 @@ class AircallNumbers
      *
      * @return mixed
      */
-    public function updateNumber($id, $options = [])
+    public function update($id, $options = [])
     {
         $path = $this->numberPath($id);
 

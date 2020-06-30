@@ -31,7 +31,7 @@ class AircallCompany
      *
      * @return mixed
      */
-    public function getCompany($options = [])
+    public function get($options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
