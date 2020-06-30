@@ -116,6 +116,106 @@ class AircallContacts
     }
 
     /**
+     * Add phone number to a Contact.
+     *
+     * @param int   $id
+     * @param array $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function addPhoneNumber($id, $options = [])
+    {
+        $path = $this->contactPath($id);
+
+        return $this->client->post($path.'/phone_details', $options);
+    }
+
+    /**
+     * Update a phone number from a Contact.
+     *
+     * @param int   $contactId
+     * @param int   $phoneNumberId
+     * @param array $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function updatePhoneNumber($contactId, $phoneNumberId, $options = [])
+    {
+        $path = $this->contactPath($contactId);
+
+        return $this->client->post($path.'/phone_details/'.$phoneNumberId, $options);
+    }
+
+    /**
+     * Delete a Contact's phone number.
+     *
+     * @param int   $contactId
+     * @param int   $phoneNumberId
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function deletePhoneNumber($contactId, $phoneNumberId)
+    {
+        return $this->client->delete(self::BASE_ENDPOINT.'/phone_details/'.$phoneNumberId);
+    }
+
+    /**
+     * Add email to a Contact.
+     *
+     * @param int   $id
+     * @param array $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function addEmail($id, $options = [])
+    {
+        $path = $this->contactPath($id);
+
+        return $this->client->post($path.'/email_details', $options);
+    }
+
+    /**
+     * Update an email from a Contact.
+     *
+     * @param int   $contactId
+     * @param int   $emailId
+     * @param array $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function updateEmail($contactId, $emailId, $options = [])
+    {
+        $path = $this->contactPath($contactId);
+
+        return $this->client->post($path.'/email_details/'.$emailId, $options);
+    }
+
+    /**
+     * Delete an email form a Contact.
+     *
+     * @param int   $contactId
+     * @param int   $emailId
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function deleteEmail($contactId, $emailId)
+    {
+        return $this->client->delete(self::BASE_ENDPOINT.'/email_details/'.$emailId);
+    }
+
+    /**
      * @param $id
      *
      * @return string
