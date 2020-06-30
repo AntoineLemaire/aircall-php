@@ -63,7 +63,7 @@ class AircallContacts
      *
      * @return mixed
      */
-    public function create($options)
+    public function create($options = [])
     {
         return $this->client->post(self::BASE_ENDPOINT, $options);
     }
