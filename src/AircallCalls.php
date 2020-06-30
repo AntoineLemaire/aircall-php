@@ -33,13 +33,13 @@ class AircallCalls
      *
      * @return mixed
      */
-    public function getCalls($options)
+    public function list($options)
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
 
     /**
-     * Gets a single Call with their ID.
+     * Retrieve a single Call.
      *
      * @param int $id
      *
@@ -47,7 +47,7 @@ class AircallCalls
      *
      * @return mixed
      */
-    public function getCall($id)
+    public function get($id)
     {
         $path = $this->callPath($id);
 
@@ -63,7 +63,7 @@ class AircallCalls
      *
      * @return mixed
      */
-    public function searchCalls($options = [])
+    public function search($options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT.'/search', $options);
     }
@@ -80,7 +80,7 @@ class AircallCalls
      *
      * @return mixed
      */
-    public function linkCall($id, $options = [])
+    public function link($id, $options = [])
     {
         $path = $this->callPath($id);
 
@@ -97,7 +97,7 @@ class AircallCalls
      *
      * @return mixed
      */
-    public function transfertCall($id, $options = [])
+    public function transfert($id, $options = [])
     {
         $path = $this->callPath($id);
 
@@ -200,7 +200,7 @@ class AircallCalls
      *
      * @return mixed
      */
-    public function deleteRecordingCall($id)
+    public function deleteRecording($id)
     {
         $path = $this->callPath($id);
 
@@ -217,7 +217,7 @@ class AircallCalls
      *
      * @return mixed
      */
-    public function deleteVoicemailCall($id, $options = [])
+    public function deleteVoicemail($id, $options = [])
     {
         $path = $this->callPath($id);
 

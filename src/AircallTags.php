@@ -31,13 +31,13 @@ class AircallTags
      *
      * @return mixed
      */
-    public function getTags($options = [])
+    public function list($options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
 
     /**
-     * Retrieve a Tag with their ID.
+     * Retrieve a Tag.
      *
      * @param int $id
      *
@@ -45,7 +45,7 @@ class AircallTags
      *
      * @return mixed
      */
-    public function getTag($id)
+    public function get($id)
     {
         $path = $this->tagPath($id);
 

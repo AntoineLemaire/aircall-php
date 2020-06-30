@@ -31,7 +31,7 @@ class AircallWebhooks
      *
      * @return mixed
      */
-    public function getWebhooks($options = [])
+    public function list($options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
@@ -59,7 +59,7 @@ class AircallWebhooks
      *
      * @return mixed
      */
-    public function getWebhook($id)
+    public function get($id)
     {
         $path = $this->webhookPath($id);
 

@@ -1,5 +1,29 @@
 # CHANGELOG
 
+## 2.0.0 (2020-06-30)
+* Upgrade minimum PHP version to 7.1
+* BC BREAK: review naming of all functions in all endpoint to simplify them:
+  * list
+  * get
+  * update
+  * create
+  * search 
+  * link
+  * ...
+  
+Eg:
+```
+# Before
+$client->users->getUsers;
+$client->users->getUser('155468');
+
+# After
+
+$client->users->list();
+$client->users->get('155468');
+```
+
+
 ## 1.1.0 (2020-06-30)
 
 * Fix AircallCalls::comment

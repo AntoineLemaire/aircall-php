@@ -33,13 +33,13 @@ class AircallUsers
      *
      * @return mixed
      */
-    public function getUsers($options = [])
+    public function list($options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
 
     /**
-     * Gets a single User with their ID.
+     * Retrieve a single User.
      *
      * @param int $id
      *
@@ -47,7 +47,7 @@ class AircallUsers
      *
      * @return mixed
      */
-    public function getUser($id)
+    public function get($id)
     {
         $path = $this->userPath($id);
 
@@ -55,7 +55,7 @@ class AircallUsers
     }
 
     /**
-     * Start an outbound call for a specific User.
+     * Start an outbound call.
      *
      * @param int $id
      *

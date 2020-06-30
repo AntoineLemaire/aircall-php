@@ -33,13 +33,13 @@ class AircallContacts
      *
      * @return mixed
      */
-    public function getContacts($options = [])
+    public function list($options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
 
     /**
-     * Gets a single Contact with their ID.
+     * Retrieve a single Contact.
      *
      * @param int $id
      *
@@ -47,7 +47,7 @@ class AircallContacts
      *
      * @return mixed
      */
-    public function getContact($id)
+    public function get($id)
     {
         $path = $this->contactPath($id);
 
@@ -110,7 +110,7 @@ class AircallContacts
      *
      * @return mixed
      */
-    public function searchContacts($options = [])
+    public function search($options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT.'/search', $options);
     }
