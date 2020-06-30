@@ -1,3 +1,7 @@
+## API version
+Last update: 1.11.2
+
+
 ## Installation
 
 Requires PHP 5.6.
@@ -24,7 +28,8 @@ Finally, you can include the files in your PHP script:
 require "vendor/autoload.php";
 ```
 
-## Clients
+## Usage
+### Clients
 
 ```php
 use Aircall\AircallClient;
@@ -35,14 +40,14 @@ $client = new AircallClient(appId, apiKey);
 $client->ping();
 ```
 
-## Company
+### Company
 
 ```php
 // Get generic data about the account
 $client->company->getCompany();
 ```
 
-## Users
+### Users
 
 ```php
 // Get a user by ID
@@ -52,7 +57,7 @@ $client->users->getUser('155468');
 $client->users->getUsers();
 ```
 
-## Calls
+### Calls
 
 ```php
 // Get a call by ID
@@ -83,7 +88,7 @@ $client->calls->deleteRecordingCall('795312');
 $client->calls->deleteVoicemailCall('13877988');
 ```
 
-## Contacts
+### Contacts
 
 ```php
 // List all contacts
@@ -139,3 +144,7 @@ $client->contacts->update('165451', [
 // Delete a specific Contact
 $client->contacts->delete('325459');
 ```
+### Tags
+TODO
+### Webhooks
+TODO
