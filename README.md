@@ -1,31 +1,18 @@
+This is a non-official Aircall PHP library which provides access to the Aircall API from applications written in the PHP language.
+
+Api references: https://developer.aircall.io/api-references/
+
 ## API version
 Last update: 1.11.2
 
 
 ## Installation
 
-Requires PHP 5.6.
-
-Using Composer:
-
 The recommended way to install aircall-php is through [Composer](https://getcomposer.org):
 
-First, install Composer:
 
 ```
-$ curl -sS https://getcomposer.org/installer | php
-```
-
-Next, install the latest aircall-php:
-
-```
-$ php composer.phar require antoinelemaire/aircall-php
-```
-
-Finally, you can include the files in your PHP script:
-
-```php
-require "vendor/autoload.php";
+composer require antoinelemaire/aircall-php
 ```
 
 ## Usage
