@@ -71,6 +71,8 @@ class AircallCalls
     /**
      * Display a link in-app to the User who answered a specific Call.
      *
+     * @deprecated since 2019-11-21 available on the Call object
+     *
      * @param int   $id
      * @param array $options
      *
@@ -116,7 +118,7 @@ class AircallCalls
     {
         $path = $this->callPath($id);
 
-        return $this->client->post($path.'/metadata', $options);
+        return $this->client->post($path.'/comments', $options);
     }
 
     /**
@@ -155,6 +157,8 @@ class AircallCalls
 
     /**
      * Display custom informations during a Call in the Phone app.
+     *
+     * @deprecated since 2019-11-21 available on the Call object
      *
      * @param int   $id
      * @param array $options
@@ -218,6 +222,23 @@ class AircallCalls
         $path = $this->callPath($id);
 
         return $this->client->delete($path.'/voicemail', $options);
+    }
+
+    /**
+     * Add Insight Cards display custom data to Agents in their Phone apps during ongoing Calls
+     *
+     * @param int   $id
+     * @param array $options
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     *
+     * @return mixed
+     */
+    public function addInsightCards($id, $options)
+    {
+        $path = $this->callPath($id);
+
+        return $this->client->post($path.'/insight_cards', $options);
     }
 
     /**
