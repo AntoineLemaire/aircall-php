@@ -19,6 +19,11 @@
         "php": ">= 7.1"
     },
     "require-dev": {
-        "phpunit/phpunit": "4.0.*"
+        "phpunit/phpunit": "4.0.*",
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "config": {
+        "bin-dir": "bin",
+        "apcu-autoloader": true
     }
 }

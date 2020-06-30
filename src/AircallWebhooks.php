@@ -2,6 +2,8 @@
 
 namespace Aircall;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 /**
  * Class AircallWebhooks.
  */
@@ -12,12 +14,7 @@ class AircallWebhooks
     /** @var AircallClient */
     private $client;
 
-    /**
-     * AircallWebhooks constructor.
-     *
-     * @param AircallClient $client
-     */
-    public function __construct($client)
+    public function __construct(AircallClient $client)
     {
         $this->client = $client;
     }
@@ -25,13 +22,11 @@ class AircallWebhooks
     /**
      * List all Webhooks.
      *
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function list($options = [])
+    public function list(array $options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
@@ -39,13 +34,11 @@ class AircallWebhooks
     /**
      * Create a Webhook.
      *
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function create($options = [])
+    public function create(array $options = [])
     {
         return $this->client->post(self::BASE_ENDPOINT, $options);
     }
@@ -53,13 +46,11 @@ class AircallWebhooks
     /**
      * Retrieve a Webhook.
      *
-     * @param int $id
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function get($id)
+    public function get(int $id)
     {
         $path = $this->webhookPath($id);
 
@@ -69,13 +60,11 @@ class AircallWebhooks
     /**
      * Delete a Webhook.
      *
-     * @param int $id
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function delete($id)
+    public function delete(int $id)
     {
         $path = $this->webhookPath($id);
 
@@ -85,26 +74,18 @@ class AircallWebhooks
     /**
      * Update a Webhook.
      *
-     * @param int   $id
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function update($id, $options = [])
+    public function update(int $id, array $options = [])
     {
         $path = $this->webhookPath($id);
 
         return $this->client->post($path, $options);
     }
 
-    /**
-     * @param $id
-     *
-     * @return string
-     */
-    public function webhookPath($id)
+    public function webhookPath(int $id): string
     {
         return self::BASE_ENDPOINT.'/'.$id;
     }

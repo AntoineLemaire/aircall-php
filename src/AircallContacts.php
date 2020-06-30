@@ -14,12 +14,7 @@ class AircallContacts
     /** @var AircallClient */
     private $client;
 
-    /**
-     * AircallContacts constructor.
-     *
-     * @param AircallClient $client
-     */
-    public function __construct($client)
+    public function __construct(AircallClient $client)
     {
         $this->client = $client;
     }
@@ -27,13 +22,11 @@ class AircallContacts
     /**
      * Lists Contacts.
      *
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function list($options = [])
+    public function list(array $options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
@@ -41,13 +34,11 @@ class AircallContacts
     /**
      * Retrieve a single Contact.
      *
-     * @param int $id
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function get($id)
+    public function get(int $id)
     {
         $path = $this->contactPath($id);
 
@@ -57,13 +48,11 @@ class AircallContacts
     /**
      * Creates a Contact.
      *
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function create($options = [])
+    public function create(array $options = [])
     {
         return $this->client->post(self::BASE_ENDPOINT, $options);
     }
@@ -71,14 +60,11 @@ class AircallContacts
     /**
      * Update data for a specific Contact.
      *
-     * @param int|string $id
-     * @param array      $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function update($id, $options = [])
+    public function update(int $id, array $options = [])
     {
         $path = $this->contactPath($id);
 
@@ -88,13 +74,11 @@ class AircallContacts
     /**
      * Delete a specific Contact.
      *
-     * @param int|string $id
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function delete($id)
+    public function delete(int $id)
     {
         $path = $this->contactPath($id);
 
@@ -104,13 +88,11 @@ class AircallContacts
     /**
      * Search Contacts.
      *
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function search($options = [])
+    public function search(array $options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT.'/search', $options);
     }
@@ -118,14 +100,11 @@ class AircallContacts
     /**
      * Add phone number to a Contact.
      *
-     * @param int   $id
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function addPhoneNumber($id, $options = [])
+    public function addPhoneNumber(int $id, array $options = [])
     {
         $path = $this->contactPath($id);
 
@@ -135,15 +114,11 @@ class AircallContacts
     /**
      * Update a phone number from a Contact.
      *
-     * @param int   $contactId
-     * @param int   $phoneNumberId
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function updatePhoneNumber($contactId, $phoneNumberId, $options = [])
+    public function updatePhoneNumber(int $contactId, int $phoneNumberId, array $options = [])
     {
         $path = $this->contactPath($contactId);
 
@@ -153,14 +128,11 @@ class AircallContacts
     /**
      * Delete a Contact's phone number.
      *
-     * @param int   $contactId
-     * @param int   $phoneNumberId
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function deletePhoneNumber($contactId, $phoneNumberId)
+    public function deletePhoneNumber(int $contactId, int $phoneNumberId)
     {
         return $this->client->delete(self::BASE_ENDPOINT.'/phone_details/'.$phoneNumberId);
     }
@@ -168,14 +140,11 @@ class AircallContacts
     /**
      * Add email to a Contact.
      *
-     * @param int   $id
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function addEmail($id, $options = [])
+    public function addEmail(int $id, array $options = [])
     {
         $path = $this->contactPath($id);
 
@@ -185,15 +154,11 @@ class AircallContacts
     /**
      * Update an email from a Contact.
      *
-     * @param int   $contactId
-     * @param int   $emailId
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function updateEmail($contactId, $emailId, $options = [])
+    public function updateEmail(int $contactId, int $emailId, array $options = [])
     {
         $path = $this->contactPath($contactId);
 
@@ -203,24 +168,16 @@ class AircallContacts
     /**
      * Delete an email form a Contact.
      *
-     * @param int   $contactId
-     * @param int   $emailId
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function deleteEmail($contactId, $emailId)
+    public function deleteEmail(int $contactId, int $emailId)
     {
         return $this->client->delete(self::BASE_ENDPOINT.'/email_details/'.$emailId);
     }
 
-    /**
-     * @param $id
-     *
-     * @return string
-     */
-    public function contactPath($id)
+    public function contactPath(int $id): string
     {
         return self::BASE_ENDPOINT.'/'.$id;
     }

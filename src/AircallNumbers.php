@@ -14,12 +14,7 @@ class AircallNumbers
     /** @var AircallClient */
     private $client;
 
-    /**
-     * AircallNumbers constructor.
-     *
-     * @param AircallClient $client
-     */
-    public function __construct($client)
+    public function __construct(AircallClient $client)
     {
         $this->client = $client;
     }
@@ -27,13 +22,11 @@ class AircallNumbers
     /**
      * Lists Numbers.
      *
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function list($options = [])
+    public function list(array $options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
@@ -41,13 +34,11 @@ class AircallNumbers
     /**
      * Retrieve a Number.
      *
-     * @param int $id
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function get($id)
+    public function get(int $id)
     {
         $path = $this->numberPath($id);
 
@@ -57,26 +48,18 @@ class AircallNumbers
     /**
      * Update a single Number.
      *
-     * @param int   $id
-     * @param array $options
-     *
      * @throws \GuzzleHttp\Exception\GuzzleException
      *
      * @return mixed
      */
-    public function update($id, $options = [])
+    public function update(int $id, array $options = [])
     {
         $path = $this->numberPath($id);
 
         return $this->client->put($path, $options);
     }
 
-    /**
-     * @param $id
-     *
-     * @return string
-     */
-    public function numberPath($id)
+    public function numberPath(int $id): string
     {
         return self::BASE_ENDPOINT.'/'.$id;
     }

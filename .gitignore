@@ -1,6 +1,7 @@
 build/
 composer.lock
 vendor/
+bin/
 *.swp
 
 ###############

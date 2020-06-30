@@ -2,6 +2,8 @@
 
 namespace Aircall;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 /**
  * Class AircallCalls.
  *
@@ -14,12 +16,7 @@ class AircallCalls
     /** @var AircallClient */
     private $client;
 
-    /**
-     * AircallCalls constructor.
-     *
-     * @param AircallClient $client
-     */
-    public function __construct($client)
+    public function __construct(AircallClient $client)
     {
         $this->client = $client;
     }
@@ -27,13 +24,11 @@ class AircallCalls
     /**
      * Lists Calls.
      *
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function list($options)
+    public function list(array $options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
@@ -41,13 +36,11 @@ class AircallCalls
     /**
      * Retrieve a single Call.
      *
-     * @param int $id
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function get($id)
+    public function get(int $id)
     {
         $path = $this->callPath($id);
 
@@ -59,11 +52,11 @@ class AircallCalls
      *
      * @param array $options
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function search($options = [])
+    public function search(array $options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT.'/search', $options);
     }
@@ -73,14 +66,11 @@ class AircallCalls
      *
      * @deprecated since 2019-11-21 available on the Call object
      *
-     * @param int   $id
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function link($id, $options = [])
+    public function link(int $id, array $options = [])
     {
         $path = $this->callPath($id);
 
@@ -90,14 +80,11 @@ class AircallCalls
     /**
      * Transfer the Call to another user.
      *
-     * @param int   $id
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function transfert($id, $options = [])
+    public function transfert(int $id, array $options = [])
     {
         $path = $this->callPath($id);
 
@@ -107,14 +94,11 @@ class AircallCalls
     /**
      * Comment the Call.
      *
-     * @param int   $id
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function comment($id, $options = [])
+    public function comment(int $id, array $options = [])
     {
         $path = $this->callPath($id);
 
@@ -124,14 +108,11 @@ class AircallCalls
     /**
      * Pause recording on a live Call.
      *
-     * @param int   $id
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function pauseRecording($id, $options = [])
+    public function pauseRecording(int $id, array $options = [])
     {
         $path = $this->callPath($id);
 
@@ -141,14 +122,11 @@ class AircallCalls
     /**
      * Resume recording on a live Call.
      *
-     * @param int   $id
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function resumeRecording($id, $options = [])
+    public function resumeRecording(int $id, array $options = [])
     {
         $path = $this->callPath($id);
 
@@ -160,14 +138,11 @@ class AircallCalls
      *
      * @deprecated since 2019-11-21 available on the Call object
      *
-     * @param int   $id
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function getMetadata($id, $options = [])
+    public function getMetadata(int $id, array $options = [])
     {
         $path = $this->callPath($id);
 
@@ -177,14 +152,11 @@ class AircallCalls
     /**
      * Set the Tags for a specific Call.
      *
-     * @param int   $id
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function setTags($id, $options = [])
+    public function setTags(int $id, array $options = [])
     {
         $path = $this->callPath($id);
 
@@ -194,13 +166,11 @@ class AircallCalls
     /**
      * Delete the recording of a specific Call.
      *
-     * @param int $id
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function deleteRecording($id)
+    public function deleteRecording(int $id)
     {
         $path = $this->callPath($id);
 
@@ -210,14 +180,11 @@ class AircallCalls
     /**
      * Delete the voicemail of a specific Call.
      *
-     * @param int   $id
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function deleteVoicemail($id, $options = [])
+    public function deleteVoicemail(int $id, array $options = [])
     {
         $path = $this->callPath($id);
 
@@ -225,28 +192,20 @@ class AircallCalls
     }
 
     /**
-     * Add Insight Cards display custom data to Agents in their Phone apps during ongoing Calls
+     * Add Insight Cards display custom data to Agents in their Phone apps during ongoing Calls.
      *
-     * @param int   $id
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function addInsightCards($id, $options)
+    public function addInsightCards(int $id, array $options = [])
     {
         $path = $this->callPath($id);
 
         return $this->client->post($path.'/insight_cards', $options);
     }
 
-    /**
-     * @param $id
-     *
-     * @return string
-     */
-    public function callPath($id)
+    public function callPath(int $id): string
     {
         return self::BASE_ENDPOINT.'/'.$id;
     }

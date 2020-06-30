@@ -14,12 +14,7 @@ class AircallTeams
     /** @var AircallClient */
     private $client;
 
-    /**
-     * AircallTeams constructor.
-     *
-     * @param AircallClient $client
-     */
-    public function __construct($client)
+    public function __construct(AircallClient $client)
     {
         $this->client = $client;
     }
@@ -27,13 +22,11 @@ class AircallTeams
     /**
      * Retrieve a Team.
      *
-     * @param int $id
-     *
      * @throws GuzzleException
      *
      * @return mixed
      */
-    public function get($id)
+    public function get(int $id)
     {
         $path = $this->teamPath($id);
 
@@ -43,13 +36,11 @@ class AircallTeams
     /**
      * Create a Team.
      *
-     * @param array $options
-     *
      * @throws GuzzleException
      *
      * @return mixed
      */
-    public function create($options = [])
+    public function create(array $options = [])
     {
         return $this->client->post(self::BASE_ENDPOINT, $options);
     }
@@ -57,13 +48,11 @@ class AircallTeams
     /**
      * Delete a Team.
      *
-     * @param int $id
-     *
      * @throws GuzzleException
      *
      * @return mixed
      */
-    public function delete($id)
+    public function delete(int $id)
     {
         $path = $this->teamPath($id);
 
@@ -73,14 +62,11 @@ class AircallTeams
     /**
      * Add a User to a Team.
      *
-     * @param int $teamId
-     * @param int $userId
-     *
      * @throws GuzzleException
      *
      * @return mixed
      */
-    public function addUser($teamId, $userId)
+    public function addUser(int $teamId, int $userId)
     {
         $path = $this->teamPath($teamId);
 
@@ -90,28 +76,18 @@ class AircallTeams
     /**
      * Remove a User from a Team.
      *
-     * @param int $teamId
-     * @param int $userId
-     *
      * @throws GuzzleException
      *
      * @return mixed
      */
-    public function removeUser($teamId, $userId)
+    public function removeUser(int $teamId, int $userId)
     {
         $path = $this->teamPath($teamId);
 
         return $this->client->delete($path.'/users/'.$userId);
     }
 
-
-
-    /**
-     * @param $id
-     *
-     * @return string
-     */
-    public function teamPath($id)
+    public function teamPath(int $id): string
     {
         return self::BASE_ENDPOINT.'/'.$id;
     }

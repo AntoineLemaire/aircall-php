@@ -2,6 +2,8 @@
 
 namespace Aircall;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 /**
  * Class AircallCompany.
  */
@@ -12,12 +14,7 @@ class AircallCompany
     /** @var AircallClient */
     private $client;
 
-    /**
-     * AircallCompany constructor.
-     *
-     * @param AircallClient $client
-     */
-    public function __construct($client)
+    public function __construct(AircallClient $client)
     {
         $this->client = $client;
     }
@@ -25,13 +22,11 @@ class AircallCompany
     /**
      * Gets generic data about the account.
      *
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function get($options = [])
+    public function get(array $options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }

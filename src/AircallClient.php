@@ -10,7 +10,7 @@ class AircallClient
 {
     const BASE_URI = 'api.aircall.io';
 
-    /** @var Client $http_client */
+    /** @var Client */
     private $http_client;
 
     /** @var string API ID authentication */
@@ -19,34 +19,32 @@ class AircallClient
     /** @var string API token authentication */
     protected $apiToken;
 
-    /** @var AircallCompany $company */
+    /** @var AircallCompany */
     public $company;
 
-    /** @var AircallUsers $users */
+    /** @var AircallUsers */
     public $users;
 
-    /** @var AircallNumbers $numbers */
+    /** @var AircallNumbers */
     public $numbers;
 
-    /** @var AircallCalls $calls */
+    /** @var AircallCalls */
     public $calls;
 
-    /** @var AircallContacts $contacts */
+    /** @var AircallContacts */
     public $contacts;
 
-    /** @var AircallTags $tags */
+    /** @var AircallTags */
     public $tags;
 
-    /** @var AircallTeams $teams */
+    /** @var AircallTeams */
     public $teams;
 
     /**
-     * AircallClient constructor.
-     *
      * @param string $apiID    app ID
      * @param string $apiToken api Token
      */
-    public function __construct($apiID, $apiToken)
+    public function __construct(string $apiID, string $apiToken)
     {
         $this->setDefaultClient();
         $this->company = new AircallCompany($this);
@@ -243,8 +241,6 @@ class AircallClient
     }
 
     /**
-     * @param ResponseInterface $response
-     *
      * @return mixed
      */
     private function handleResponse(ResponseInterface $response)

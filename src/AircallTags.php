@@ -2,6 +2,8 @@
 
 namespace Aircall;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 /**
  * Class AircallTags.
  */
@@ -12,12 +14,7 @@ class AircallTags
     /** @var AircallClient */
     private $client;
 
-    /**
-     * AircallTags constructor.
-     *
-     * @param AircallClient $client
-     */
-    public function __construct($client)
+    public function __construct(AircallClient $client)
     {
         $this->client = $client;
     }
@@ -25,13 +22,11 @@ class AircallTags
     /**
      * List all Tags.
      *
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function list($options = [])
+    public function list(array $options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
@@ -39,13 +34,11 @@ class AircallTags
     /**
      * Retrieve a Tag.
      *
-     * @param int $id
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function get($id)
+    public function get(int $id)
     {
         $path = $this->tagPath($id);
 
@@ -55,13 +48,11 @@ class AircallTags
     /**
      * Create a Tag.
      *
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function create($options)
+    public function create(array $options)
     {
         return $this->client->post(self::BASE_ENDPOINT, $options);
     }
@@ -69,14 +60,11 @@ class AircallTags
     /**
      * Update a Tag.
      *
-     * @param int   $id
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function update($id, $options)
+    public function update(int $id, array $options = [])
     {
         $path = $this->tagPath($id);
 
@@ -86,25 +74,18 @@ class AircallTags
     /**
      * Delete a Tag.
      *
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function delete($id)
+    public function delete(int $id)
     {
         $path = $this->tagPath($id);
 
         return $this->client->get($path);
     }
 
-    /**
-     * @param $id
-     *
-     * @return string
-     */
-    public function tagPath($id)
+    public function tagPath(int $id): string
     {
         return self::BASE_ENDPOINT.'/'.$id;
     }

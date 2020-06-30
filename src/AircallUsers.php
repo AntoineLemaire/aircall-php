@@ -2,6 +2,8 @@
 
 namespace Aircall;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 /**
  * Class AircallUsers.
  *
@@ -14,12 +16,7 @@ class AircallUsers
     /** @var AircallClient */
     private $client;
 
-    /**
-     * AircallUsers constructor.
-     *
-     * @param AircallClient $client
-     */
-    public function __construct($client)
+    public function __construct(AircallClient $client)
     {
         $this->client = $client;
     }
@@ -27,13 +24,11 @@ class AircallUsers
     /**
      * Lists Users.
      *
-     * @param array $options
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function list($options = [])
+    public function list(array $options = [])
     {
         return $this->client->get(self::BASE_ENDPOINT, $options);
     }
@@ -41,13 +36,11 @@ class AircallUsers
     /**
      * Retrieve a single User.
      *
-     * @param int $id
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function get($id)
+    public function get(int $id)
     {
         $path = $this->userPath($id);
 
@@ -57,13 +50,11 @@ class AircallUsers
     /**
      * Start an outbound call.
      *
-     * @param int $id
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function calls($id, $options = [])
+    public function calls(int $id, array $options = [])
     {
         $path = $this->userPath($id);
 
@@ -73,25 +64,18 @@ class AircallUsers
     /**
      * Dial a phone number in an agent's phone.
      *
-     * @param int $id
-     *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
-    public function dial($id, $options = [])
+    public function dial(int $id, array $options = [])
     {
         $path = $this->userPath($id);
 
         return $this->client->post($path.'/dial', $options);
     }
 
-    /**
-     * @param $id
-     *
-     * @return string
-     */
-    public function userPath($id)
+    public function userPath(int $id): string
     {
         return self::BASE_ENDPOINT.'/'.$id;
     }
