@@ -44,58 +44,58 @@ $client->ping();
 
 ```php
 // Get generic data about the account
-$client->company->getCompany();
+$client->company->get();
 ```
 
 ### Users
 
 ```php
 // Get a user by ID
-$client->users->getUser('155468');
+$client->users->get('155468');
 
 // List all users
-$client->users->getUsers();
+$client->users->list();
 ```
 
 ### Calls
 
 ```php
 // Get a call by ID
-$client->calls->getCall('155468');
+$client->calls->get('155468');
 
 // List all calls
-$client->calls->getCalls();
+$client->calls->list();
 
 // Search calls
-$client->calls->searchCalls([
+$client->calls->search([
   'tags' => 'myTag',
 ]);
 
 // Display a link in-app to the User who answered a specific Call.
-$client->calls->linkCall('155468', [
+$client->calls->link('155468', [
     'link' => 'http://something.io/mypage'
 ]);
 
 // Transfer the Call to another user.
-$client->calls->transfertCall('1644658', [
+$client->calls->transfert('1644658', [
     'user_id' => '8945487'
 ]);
 
 // Delete the recording of a specific Call.
-$client->calls->deleteRecordingCall('795312');
+$client->calls->deleteRecording('795312');
 
 // Delete the voicemail of a specific Call.
-$client->calls->deleteVoicemailCall('13877988');
+$client->calls->deleteVoicemail('13877988');
 ```
 
 ### Contacts
 
 ```php
 // List all contacts
-$client->contacts->getContacts();
+$client->contacts->list();
 
 // Get a contact by ID
-$client->contacts->getContact('699421');
+$client->contacts->get('699421');
 
 // Create a contact
 $client->contacts->create([
@@ -117,7 +117,7 @@ $client->contacts->create([
 ]);
 
 // Search contacts
-$client->contacts->searchContacts([
+$client->contacts->search([
     'phone_number' => '+33631000000',
     'email' => 'john.doe@something.io'
 ]);
