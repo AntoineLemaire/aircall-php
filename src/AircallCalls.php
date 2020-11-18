@@ -50,8 +50,6 @@ class AircallCalls
     /**
      * Search Calls.
      *
-     * @param array $options
-     *
      * @throws GuzzleException
      *
      * @return mixed
@@ -62,7 +60,7 @@ class AircallCalls
     }
 
     /**
-     * Display a link in-app to the User who answered a specific Call.
+     * Display a link in-app to the User who answered a specific Call.
      *
      * @deprecated since 2019-11-21 available on the Call object
      *
@@ -78,7 +76,7 @@ class AircallCalls
     }
 
     /**
-     * Transfer the Call to another user.
+     * Transfer the Call to another user.
      *
      * @throws GuzzleException
      *
@@ -164,7 +162,7 @@ class AircallCalls
     }
 
     /**
-     * Delete the recording of a specific Call.
+     * Delete the recording of a specific Call.
      *
      * @throws GuzzleException
      *
@@ -178,7 +176,7 @@ class AircallCalls
     }
 
     /**
-     * Delete the voicemail of a specific Call.
+     * Delete the voicemail of a specific Call.
      *
      * @throws GuzzleException
      *

@@ -2,6 +2,8 @@
 
 namespace Aircall;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 /**
  * Class AircallContacts.
  *
@@ -22,7 +24,7 @@ class AircallContacts
     /**
      * Lists Contacts.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -34,7 +36,7 @@ class AircallContacts
     /**
      * Retrieve a single Contact.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -48,7 +50,7 @@ class AircallContacts
     /**
      * Creates a Contact.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -60,7 +62,7 @@ class AircallContacts
     /**
      * Update data for a specific Contact.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -74,7 +76,7 @@ class AircallContacts
     /**
      * Delete a specific Contact.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -88,7 +90,7 @@ class AircallContacts
     /**
      * Search Contacts.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -100,7 +102,7 @@ class AircallContacts
     /**
      * Add phone number to a Contact.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -114,7 +116,7 @@ class AircallContacts
     /**
      * Update a phone number from a Contact.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -128,7 +130,7 @@ class AircallContacts
     /**
      * Delete a Contact's phone number.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -140,7 +142,7 @@ class AircallContacts
     /**
      * Add email to a Contact.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -154,7 +156,7 @@ class AircallContacts
     /**
      * Update an email from a Contact.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -168,7 +170,7 @@ class AircallContacts
     /**
      * Delete an email form a Contact.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
