@@ -2,6 +2,8 @@
 
 namespace Aircall;
 
+use GuzzleHttp\Exception\GuzzleException;
+
 /**
  * Class AircallNumbers.
  *
@@ -22,7 +24,7 @@ class AircallNumbers
     /**
      * Lists Numbers.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -34,7 +36,7 @@ class AircallNumbers
     /**
      * Retrieve a Number.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -48,7 +50,7 @@ class AircallNumbers
     /**
      * Update a single Number.
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */

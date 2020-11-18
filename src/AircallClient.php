@@ -3,8 +3,11 @@
 namespace Aircall;
 
 use GuzzleHttp\Client;
-use function GuzzleHttp\Psr7\stream_for;
+use GuzzleHttp\Exception\GuzzleException;
+use GuzzleHttp\Psr7\Utils;
+use InvalidArgumentException;
 use Psr\Http\Message\ResponseInterface;
+use stdClass;
 
 class AircallClient
 {
@@ -80,7 +83,7 @@ class AircallClient
      * @param string $endpoint
      * @param array  $datas
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -102,7 +105,7 @@ class AircallClient
      * @param string $endpoint
      * @param array  $datas
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -124,7 +127,7 @@ class AircallClient
      * @param string $endpoint
      * @param array  $datas
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -144,7 +147,7 @@ class AircallClient
      * @param string $endpoint
      * @param array  $$datas
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -163,9 +166,9 @@ class AircallClient
     /**
      * Returns next page of the result.
      *
-     * @param \stdClass $meta
+     * @param stdClass $meta
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -183,9 +186,9 @@ class AircallClient
     /**
      * Returns previous page of the result.
      *
-     * @param \stdClass $meta
+     * @param stdClass $meta
      *
-     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws GuzzleException
      *
      * @return mixed
      */
@@ -237,7 +240,7 @@ class AircallClient
         if (false !== $pos = strpos($uri, self::BASE_URI)) {
             return substr_replace($uri, $this->getAuth().'@', $pos, 0);
         }
-        throw new \InvalidArgumentException('uri is not an Aircall API Uri');
+        throw new InvalidArgumentException('uri is not an Aircall API Uri');
     }
 
     /**
@@ -245,9 +248,8 @@ class AircallClient
      */
     private function handleResponse(ResponseInterface $response)
     {
-        $stream = stream_for($response->getBody());
-        $data = json_decode($stream);
+        $stream = Utils::streamFor($response->getBody());
 
-        return $data;
+        return json_decode($stream);
     }
 }
