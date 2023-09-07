@@ -124,7 +124,7 @@ class AircallContacts
     {
         $path = $this->contactPath($contactId);
 
-        return $this->client->post($path.'/phone_details/'.$phoneNumberId, $options);
+        return $this->client->put($path.'/phone_details/'.$phoneNumberId, $options);
     }
 
     /**
@@ -136,7 +136,7 @@ class AircallContacts
      */
     public function deletePhoneNumber(int $contactId, int $phoneNumberId)
     {
-        return $this->client->delete(self::BASE_ENDPOINT.'/phone_details/'.$phoneNumberId);
+        return $this->client->delete(self::BASE_ENDPOINT.'/'.$contactId.'/phone_details/'.$phoneNumberId);
     }
 
     /**
@@ -164,7 +164,7 @@ class AircallContacts
     {
         $path = $this->contactPath($contactId);
 
-        return $this->client->post($path.'/email_details/'.$emailId, $options);
+        return $this->client->put($path.'/email_details/'.$emailId, $options);
     }
 
     /**
@@ -176,7 +176,7 @@ class AircallContacts
      */
     public function deleteEmail(int $contactId, int $emailId)
     {
-        return $this->client->delete(self::BASE_ENDPOINT.'/email_details/'.$emailId);
+        return $this->client->delete(self::BASE_ENDPOINT.'/'.$contactId.'/email_details/'.$emailId);
     }
 
     public function contactPath(int $id): string
