@@ -68,7 +68,7 @@ class AircallTags
     {
         $path = $this->tagPath($id);
 
-        return $this->client->post($path, $options);
+        return $this->client->put($path, $options);
     }
 
     /**
