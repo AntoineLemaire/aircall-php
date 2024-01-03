@@ -226,7 +226,7 @@ class AircallCalls
      *
      * @return mixed
      */
-    public function archive(int $id)
+    public function unarchive(int $id)
     {
         $path = $this->callPath($id);
 
