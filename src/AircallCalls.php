@@ -203,6 +203,37 @@ class AircallCalls
         return $this->client->post($path.'/insight_cards', $options);
     }
 
+    /**
+     * Archive a Call
+     * @see https://developer.aircall.io/api-references/#archive-a-call
+     *
+     * @throws GuzzleException
+     *
+     * @return mixed
+     */
+    public function archive(int $id)
+    {
+        $path = $this->callPath($id);
+
+        return $this->client->put($path.'/archive');
+    }
+
+    /**
+     * Unarchive a Call
+     * @see https://developer.aircall.io/api-references/#unarchive-a-call
+     *
+     * @throws GuzzleException
+     *
+     * @return mixed
+     */
+    public function archive(int $id)
+    {
+        $path = $this->callPath($id);
+
+        return $this->client->put($path.'/unarchive');
+    }
+
+
     public function callPath(int $id): string
     {
         return self::BASE_ENDPOINT.'/'.$id;
